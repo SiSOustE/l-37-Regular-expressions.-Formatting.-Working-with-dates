@@ -8,9 +8,9 @@ const passwordError = document.getElementById('password-error');
 const emailError = document.getElementById('email-error');
 
 usernameInput.addEventListener('blur', () => {
-    const usernameRegex = /^[a-zA-Z0-9_-]{3,15}$/; // Пример: от 3 до 15 символов
+    const usernameRegex = /^[а-яА-ЯёЁ\-]+$/;
     if (!usernameRegex.test(usernameInput.value)) {
-        usernameError.textContent = 'Имя пользователя должно состоять из 3-15 букв, цифр или символов _ и -';
+        usernameError.textContent = 'может содержать символы кириллицы и дефис';
         usernameInput.classList.add('input-error');
     } else {
         usernameError.textContent = '';
@@ -19,9 +19,9 @@ usernameInput.addEventListener('blur', () => {
 });
 
 passwordInput.addEventListener('blur', () => {
-    const passwordRegex = /^(?=.[A-Za-z])(?=.\d)[A-Za-z\d]{8,}$/; // Пример: минимум 8 символов, хотя бы 1 буква и 1 цифра
+    const passwordRegex = /^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,}$/;
     if (!passwordRegex.test(passwordInput.value)) {
-        passwordError.textContent = 'Пароль должен содержать минимум 8 символов, включая буквы и цифры';
+        passwordError.textContent = 'минимум 8 символов, только латинские буквы и цифры';
         passwordInput.classList.add('input-error');
     } else {
         passwordError.textContent = '';
@@ -30,7 +30,7 @@ passwordInput.addEventListener('blur', () => {
 });
 
 emailInput.addEventListener('blur', () => {
-    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/; // Простой проверочный шаблон для электронной почты
+    const emailRegex = /^[a-zA-Z0-9._]+@[a-zA-Z]+\.[a-zA-Z]{2,}$/; // Простой проверочный шаблон для электронной почты
     if (!emailRegex.test(emailInput.value)) {
         emailError.textContent = 'Введите корректный адрес электронной почты';
         emailInput.classList.add('input-error');
