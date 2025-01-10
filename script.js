@@ -8,9 +8,9 @@ const passwordError = document.getElementById('password-error');
 const emailError = document.getElementById('email-error');
 
 usernameInput.addEventListener('blur', () => {
-    const usernameRegex = /^[а-яА-ЯёЁ\-]+$/;
+    const usernameRegex = /^[а-яА-ЯёЁ\s\-]+$/;
     if (!usernameRegex.test(usernameInput.value)) {
-        usernameError.textContent = 'может содержать символы кириллицы и дефис';
+        usernameError.textContent = 'может содержать символы кириллицы, пробелы, дефис';
         usernameInput.classList.add('input-error');
     } else {
         usernameError.textContent = '';
